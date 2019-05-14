@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/buttonScoredUnderhand"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/buttonScoredPenalty"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+    <Button
+        android:id="@+id/buttonScoredFreePass"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <Button
+        android:id="@+id/buttonScoredOverhand"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonPlayerAttack1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="107dp" />
+
+    <Button
+        android:id="@+id/buttonPlayerAttack2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerAttack1" />
+
+    <Button
+        android:id="@+id/buttonPlayerAttack3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerAttack2" />
+
+    <Button
+        android:id="@+id/buttonPlayerAttack4"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerAttack3" />
+
+    <TextView
+        android:id="@+id/textViewPlayerAttack1"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:text="Attacker 1"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlayerAttack1"
+        app:layout_constraintTop_toTopOf="@+id/buttonPlayerAttack1" />
+
+    <TextView
+        android:id="@+id/textViewPlayerAttack2"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:text="Attacker 2"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlayerAttack2"
+        app:layout_constraintTop_toTopOf="@+id/buttonPlayerAttack2" />
+
+    <TextView
+        android:id="@+id/textViewPlayerAttack3"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:text="Attacker 3"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlayerAttack3"
+        app:layout_constraintTop_toTopOf="@+id/buttonPlayerAttack3" />
+
+    <TextView
+        android:id="@+id/textViewPlayerAttack4"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:text="Attacker 4"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlayerAttack4"
+        app:layout_constraintTop_toTopOf="@+id/buttonPlayerAttack4" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="395dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlayerAttack4" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="64dp"
+        android:text="Overhand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:text="Underhand"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:text="Penaly"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:text="Free Pass"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Scored"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        tools:layout_editor_absoluteX="231dp" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="(Long press for goal)"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+
+</android.support.constraint.ConstraintLayout>
