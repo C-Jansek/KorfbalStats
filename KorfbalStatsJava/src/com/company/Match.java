@@ -1,9 +1,6 @@
 package com.company;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class Match {
@@ -11,14 +8,16 @@ public class Match {
     private String homeTeam;
     private String awayTeam;
     private String matchDate;
+    private Underground underground;
 
     List<StatsList> matchStats;
 
-    public Match (String home, String away, String date) {
+    public Match (String home, String away, String date, boolean undergroundGrass) {
         homeTeam = home;
         awayTeam = away;
         matchDate = date;
         matchStats = new ArrayList<>();
+        underground = new Underground(undergroundGrass);
     }
 
 
