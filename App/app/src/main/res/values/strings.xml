@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Korfbal Stats</string>
+    <string name="ks_app_name">Korfbal Stats</string>
+    <string name="ks_app_slogan">Tracking matches</string>
 </resources>
