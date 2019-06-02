@@ -31,5 +31,16 @@
             android:textSize="16sp"
             android:fontFamily="@font/roboto_regular"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            android:id="@+id/continueButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="72dp"/>
+
+
     </LinearLayout>
+
+
 </ScrollView>

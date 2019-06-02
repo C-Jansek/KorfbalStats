@@ -1,4 +1,5 @@
 <resources>
     <string name="ks_app_name">Korfbal Stats</string>
     <string name="ks_app_slogan">Tracking matches</string>
+    <string name="ks_goal_button">X</string>
 </resources>
