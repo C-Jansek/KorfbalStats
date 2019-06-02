@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -14,12 +14,37 @@
         android:paddingTop="16dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/material_button"
+            android:id="@+id/goal_button_1A"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ks_goal_button"
+            android:layout_toLeftOf="@id/goal_button_1B"
+            android:layout_marginRight="16dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goal_button_1B"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ks_goal_button"
+            android:layout_toLeftOf="@id/goal_button_1C"
+            android:layout_marginRight="16dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goal_button_1C"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ks_goal_button"
+            android:layout_toLeftOf="@id/goal_button_1D"
+            android:layout_marginRight="16dp"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goal_button_1D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ks_goal_button"
+            android:layout_alignParentRight="true"
             />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </ScrollView>
