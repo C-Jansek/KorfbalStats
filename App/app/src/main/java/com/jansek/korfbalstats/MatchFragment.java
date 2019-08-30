@@ -124,15 +124,13 @@ public class MatchFragment extends Fragment {
         button_1A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_1A++;
-                button_1A.setText(goals_1A + " / " + shots_1A);
                 thisMatch.attackers.get(0).addSingleShot(0);
+                thisMatch.onShot(thisMatch.attackers.get(0), 0,false);
             }
         });
         button_1A.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_1A++;
                 thisMatch.attackers.get(0).addSingleGoal(0);
                 return false;
             }
@@ -142,15 +140,13 @@ public class MatchFragment extends Fragment {
         button_1B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_1B++;
-                button_1B.setText(goals_1B + " / " + shots_1B);
                 thisMatch.attackers.get(0).addSingleShot(1);
+                thisMatch.onShot(thisMatch.attackers.get(0), 1,false);
             }
         });
         button_1B.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_1B++;
                 thisMatch.attackers.get(0).addSingleGoal(1);
                 return false;
             }
@@ -160,15 +156,13 @@ public class MatchFragment extends Fragment {
         button_1C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_1C++;
-                button_1C.setText(goals_1C + " / " + shots_1C);
                 thisMatch.attackers.get(0).addSingleShot(2);
+                thisMatch.onShot(thisMatch.attackers.get(0), 2,false);
             }
         });
         button_1C.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_1C++;
                 thisMatch.attackers.get(0).addSingleGoal(2);
                 return false;
             }
@@ -178,15 +172,13 @@ public class MatchFragment extends Fragment {
         button_1D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_1D++;
-                button_1D.setText(goals_1D + " / " + shots_1D);
                 thisMatch.attackers.get(0).addSingleShot(3);
+                thisMatch.onShot(thisMatch.attackers.get(0), 3,false);
             }
         });
         button_1D.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_1D++;
                 thisMatch.attackers.get(0).addSingleGoal(3);
                 return false;
             }
@@ -197,15 +189,13 @@ public class MatchFragment extends Fragment {
         button_2A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_2A++;
-                button_2A.setText(goals_2A + " / " + shots_2A);
                 thisMatch.attackers.get(1).addSingleShot(0);
+                thisMatch.onShot(thisMatch.attackers.get(1), 0,false);
             }
         });
         button_2A.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_2A++;
                 thisMatch.attackers.get(1).addSingleGoal(0);
                 return false;
             }
@@ -215,15 +205,13 @@ public class MatchFragment extends Fragment {
         button_2B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_2B++;
-                button_2B.setText(goals_2B + " / " + shots_2B);
                 thisMatch.attackers.get(1).addSingleShot(1);
+                thisMatch.onShot(thisMatch.attackers.get(1), 1,false);
             }
         });
         button_2B.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_2B++;
                 thisMatch.attackers.get(1).addSingleGoal(1);
                 return false;
             }
@@ -233,15 +221,13 @@ public class MatchFragment extends Fragment {
         button_2C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_2C++;
-                button_2C.setText(goals_2C + " / " + shots_2C);
                 thisMatch.attackers.get(1).addSingleShot(2);
+                thisMatch.onShot(thisMatch.attackers.get(1), 2,false);
             }
         });
         button_2C.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_2C++;
                 thisMatch.attackers.get(1).addSingleGoal(2);
                 return false;
             }
@@ -251,15 +237,13 @@ public class MatchFragment extends Fragment {
         button_2D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_2D++;
-                button_2D.setText(goals_2D + " / " + shots_2D);
                 thisMatch.attackers.get(1).addSingleShot(3);
+                thisMatch.onShot(thisMatch.attackers.get(1), 3,false);
             }
         });
         button_2D.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_2D++;
                 thisMatch.attackers.get(1).addSingleGoal(3);
                 return false;
             }
@@ -270,15 +254,13 @@ public class MatchFragment extends Fragment {
         button_3A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_3A++;
-                button_3A.setText(goals_3A + " / " + shots_3A);
                 thisMatch.attackers.get(2).addSingleShot(0);
+                thisMatch.onShot(thisMatch.attackers.get(2), 0,false);
             }
         });
         button_3A.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_3A++;
                 thisMatch.attackers.get(2).addSingleGoal(0);
                 return false;
             }
@@ -288,15 +270,13 @@ public class MatchFragment extends Fragment {
         button_3B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_3B++;
-                button_3B.setText(goals_3B + " / " + shots_3B);
                 thisMatch.attackers.get(2).addSingleShot(1);
+                thisMatch.onShot(thisMatch.attackers.get(2), 1,false);
             }
         });
         button_3B.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_3B++;
                 thisMatch.attackers.get(2).addSingleGoal(1);
                 return false;
             }
@@ -306,15 +286,13 @@ public class MatchFragment extends Fragment {
         button_3C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_3C++;
-                button_3C.setText(goals_3C + " / " + shots_3C);
                 thisMatch.attackers.get(2).addSingleShot(2);
+                thisMatch.onShot(thisMatch.attackers.get(2), 2,false);
             }
         });
         button_3C.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_3C++;
                 thisMatch.attackers.get(2).addSingleGoal(2);
                 return false;
             }
@@ -324,15 +302,13 @@ public class MatchFragment extends Fragment {
         button_3D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_3D++;
-                button_3D.setText(goals_3D + " / " + shots_3D);
                 thisMatch.attackers.get(2).addSingleShot(3);
+                thisMatch.onShot(thisMatch.attackers.get(2), 3,false);
             }
         });
         button_3D.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_3D++;
                 thisMatch.attackers.get(2).addSingleGoal(3);
                 return false;
             }
@@ -343,15 +319,13 @@ public class MatchFragment extends Fragment {
         button_4A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_4A++;
-                button_4A.setText(goals_4A + " / " + shots_4A);
                 thisMatch.attackers.get(3).addSingleShot(0);
+                thisMatch.onShot(thisMatch.attackers.get(3), 0,false);
             }
         });
         button_4A.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_4A++;
                 thisMatch.attackers.get(3).addSingleGoal(0);
                 return false;
             }
@@ -361,15 +335,13 @@ public class MatchFragment extends Fragment {
         button_4B.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_4B++;
-                button_4B.setText(goals_4B + " / " + shots_4B);
                 thisMatch.attackers.get(3).addSingleShot(1);
+                thisMatch.onShot(thisMatch.attackers.get(3), 1,false);
             }
         });
         button_4B.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_4B++;
                 thisMatch.attackers.get(3).addSingleGoal(1);
                 return false;
             }
@@ -379,15 +351,13 @@ public class MatchFragment extends Fragment {
         button_4C.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_4C++;
-                button_4C.setText(goals_4C + " / " + shots_4C);
                 thisMatch.attackers.get(3).addSingleShot(2);
+                thisMatch.onShot(thisMatch.attackers.get(3), 2,false);
             }
         });
         button_4C.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_4C++;
                 thisMatch.attackers.get(3).addSingleGoal(2);
                 return false;
             }
@@ -397,15 +367,13 @@ public class MatchFragment extends Fragment {
         button_4D.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                shots_4D++;
-                button_4D.setText(goals_4D + " / " + shots_4D);
                 thisMatch.attackers.get(3).addSingleShot(3);
+                thisMatch.onShot(thisMatch.attackers.get(3), 3,false);
             }
         });
         button_4D.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                goals_4D++;
                 thisMatch.attackers.get(3).addSingleGoal(3);
                 return false;
             }
