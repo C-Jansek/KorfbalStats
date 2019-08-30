@@ -2,4 +2,13 @@
     <string name="ks_app_name">Korfbal Stats</string>
     <string name="ks_app_slogan">Tracking matches</string>
     <string name="ks_goal_button">X</string>
+    <string name="ks_textfield_name_hint">Name</string>
+    <string name="ks_playername_attacker_0">Roelant</string>
+    <string name="ks_playername_attacker_1">Wytse</string>
+    <string name="ks_playername_attacker_2">Michelle</string>
+    <string name="ks_playername_attacker_3">Lysanne</string>
+    <string name="ks_shot_type_A">Schot - L</string>
+    <string name="ks_shot_type_B">Schot - K</string>
+    <string name="ks_shot_type_C">Doorloper</string>
+    <string name="ks_shot_type_D">Strafworp</string>
 </resources>

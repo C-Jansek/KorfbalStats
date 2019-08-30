@@ -23,7 +23,8 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MATCH"
-                    android:screenOrientation="landscape"/>
+                    android:screenOrientation="landscape"
+                    />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
