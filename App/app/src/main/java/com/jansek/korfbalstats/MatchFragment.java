@@ -1,14 +1,18 @@
 package com.jansek.korfbalstats;
 
+import android.app.VoiceInteractor;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -18,51 +22,8 @@ import java.util.List;
 public class MatchFragment extends Fragment {
 
     // ---- Initialization ----
-    int goals_1A = 0;
-    int goals_1B = 0;
-    int goals_1C = 0;
-    int goals_1D = 0;
+    private Match thisMatch;
 
-    int shots_1A = 0;
-    int shots_1B = 0;
-    int shots_1C = 0;
-    int shots_1D = 0;
-    //---
-    int goals_2A = 0;
-    int goals_2B = 0;
-    int goals_2C = 0;
-    int goals_2D = 0;
-
-    int shots_2A = 0;
-    int shots_2B = 0;
-    int shots_2C = 0;
-    int shots_2D = 0;
-
-    //---
-    int goals_3A = 0;
-    int goals_3B = 0;
-    int goals_3C = 0;
-    int goals_3D = 0;
-
-    int shots_3A = 0;
-    int shots_3B = 0;
-    int shots_3C = 0;
-    int shots_3D = 0;
-
-    //---
-    int goals_4A = 0;
-    int goals_4B = 0;
-    int goals_4C = 0;
-    int goals_4D = 0;
-
-    int shots_4A = 0;
-    int shots_4B = 0;
-    int shots_4C = 0;
-    int shots_4D = 0;
-
-
-
-    Match thisMatch;
     // ---- End of Initialization ----
 
 
@@ -109,15 +70,38 @@ public class MatchFragment extends Fragment {
         return view;
     }
 
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.match_fragment, someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     private void configureButtons(final View view,
                                   final Button button_1A, final Button button_1B, final Button button_1C, final Button button_1D,
                                   final Button button_2A, final Button button_2B, final Button button_2C, final Button button_2D,
                                   final Button button_3A, final Button button_3B, final Button button_3C, final Button button_3D,
                                   final Button button_4A, final Button button_4B, final Button button_4C, final Button button_4D, final Button undoButton, final Button changesSidesButton) {
 
+        MaterialButton menuButton = view.findViewById(R.id.options_button);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FrameLayout fl = view.findViewById(R.id.options_overlay);
+                fl.setVisibility(View.VISIBLE);
+            }
+        });
 
-        //#TODO Display scores based on player instead of buttonPresses
-        //#TODO Dynamically change player scores when changeSidesButton is pressed
+        final FrameLayout optionsOverlay = view.findViewById(R.id.options_overlay);
+        optionsOverlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionsOverlay.setVisibility(View.GONE);
+            }
+        });
+
+        //#TODO save data after match (button)
+        //#TODO make user able to change players with
 
         //Player 1
         //Button 1A

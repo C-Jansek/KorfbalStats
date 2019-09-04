@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    >
+
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
         android:padding="24dp"
-        android:paddingTop="16dp"
-        android:layout_gravity="center_vertical">
+        android:layout_centerVertical="true"
+        android:id="@+id/match_fragment"
+        android:background="@color/colorBackground">
 
-
+        <!--Triple side buttons-->
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/undo_button"
@@ -32,20 +38,22 @@
             />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/substitution_button"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:layout_marginTop="112dp"
-                app:icon="@drawable/substitution_icon"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp" />
-
-            <com.google.android.material.button.MaterialButton
                 android:id="@+id/change_sides_button"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:layout_marginTop="224dp"
+                android:layout_marginTop="112dp"
                 app:icon="@drawable/change_sides_icon"
+                android:gravity="center_horizontal"
+                app:iconPadding="0dp"
+                app:iconGravity="textStart"
+            />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/options_button"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="224dp"
+                app:icon="@drawable/menu_icon"
                 android:gravity="center_horizontal"
                 app:iconPadding="0dp"
                 app:iconGravity="textStart"
@@ -53,7 +61,7 @@
 
         </RelativeLayout>
 
-
+        <!--Shot Names-->
         <RelativeLayout
             android:id="@+id/goal_type_rl"
             android:layout_width="match_parent"
@@ -110,7 +118,7 @@
         </RelativeLayout>
 
 
-
+        <!--Score buttons + attackers_names -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -339,9 +347,68 @@
 
     </RelativeLayout>
 
+    <!--Options Overlay-->
+    <FrameLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp"
+        android:paddingTop="16dp"
+        android:background="#99000000"
+        android:layout_gravity="center"
+        android:id="@+id/options_overlay"
+        android:visibility="gone"
+        >
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/ks_background_border"
+            android:padding="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/substitution_button"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                app:icon="@drawable/substitution_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                android:layout_gravity="center_vertical"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_button"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                app:icon="@drawable/download_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="#CCC"
+        android:text="Click outside of box to return"/>
 
 
 
 
+</FrameLayout>
 
-</ScrollView>

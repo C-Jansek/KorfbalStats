@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="36dp"
+    android:paddingTop="16dp"
+    android:layout_gravity="center"
+    android:background="@color/colorBackground"
+    android:id="@+id/options_fragment"
+    >
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/substitution_button"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:icon="@drawable/substitution_icon"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:layout_gravity="center_vertical"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_button"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        app:icon="@drawable/download_icon"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_gravity="center_vertical"/>
+
+
+</Menu>
