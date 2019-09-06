@@ -16,13 +16,15 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="vertical"
-        android:padding="24dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
         android:layout_centerVertical="true"
         android:id="@+id/match_fragment"
         android:background="@color/colorBackground">
 
         <!--Triple side buttons-->
         <RelativeLayout
+            android:id="@+id/side_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true">
@@ -61,9 +63,252 @@
 
         </RelativeLayout>
 
+        <!--Score buttons + attackers_names -->
+        <RelativeLayout
+            android:id="@+id/score_buttons_rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="24dp"
+            >
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textview_attackername_0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    style="@style/player_name_style"
+                    android:gravity="center"
+                    android:text="@string/ks_playername_attacker_0"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@id/goal_button_1A"
+                    android:layout_marginStart="96dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_1A"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@id/goal_button_1B"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_1B"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@id/goal_button_1C"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_1C"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@id/goal_button_1D"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_1D"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp">
+
+                <TextView
+                    android:id="@+id/textview_attackername_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    style="@style/player_name_style"
+                    android:gravity="center"
+                    android:text="@string/ks_playername_attacker_1"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@id/goal_button_2A"
+                    android:layout_marginStart="96dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_2A"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_2B"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_2B"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_2C"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_2C"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_2D"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_2D"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="160dp">
+
+                <TextView
+                    android:id="@+id/textview_attackername_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    style="@style/player_name_style"
+                    android:gravity="center"
+                    android:text="@string/ks_playername_attacker_2"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@id/goal_button_3A"
+                    android:layout_marginStart="96dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_3A"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_3B"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_3B"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_3C"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_3C"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_3D"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_3D"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="240dp">
+
+                <TextView
+                    android:id="@+id/textview_attackername_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    style="@style/player_name_style"
+                    android:gravity="center"
+                    android:text="@string/ks_playername_attacker_3"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignEnd="@id/goal_button_4A"
+                    android:layout_marginStart="96dp"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_4A"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_4B"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_4B"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_4C"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_4C"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_toStartOf="@id/goal_button_4D"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goal_button_4D"
+                    android:layout_width="@dimen/scorebutton_width"
+                    android:layout_height="@dimen/scorebutton_height"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/ks_goal_button"
+                    style="@style/scorebutton_style"
+                    />
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+
         <!--Shot Names-->
         <RelativeLayout
             android:id="@+id/goal_type_rl"
+            android:layout_alignBottom="@id/score_buttons_rl"
+            android:paddingBottom="304dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -117,235 +362,9 @@
 
         </RelativeLayout>
 
-
-        <!--Score buttons + attackers_names -->
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignTop="@id/goal_type_rl"
-            android:layout_marginTop="24dp"
-            >
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/textview_attackername_0"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginTop="8dp"
-                    style="@style/player_name_style"
-                    android:gravity="center"
-                    android:text="@string/ks_playername_attacker_0"
-                    />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_1A"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@id/goal_button_1B"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_1B"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@id/goal_button_1C"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_1C"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toStartOf="@id/goal_button_1D"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_1D"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp">
-
-                <TextView
-                    android:id="@+id/textview_attackername_1"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginTop="8dp"
-                    style="@style/player_name_style"
-                    android:gravity="center"
-                    android:text="@string/ks_playername_attacker_1"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_2A"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_2B"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_2B"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_2C"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_2C"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_2D"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_2D"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="160dp">
-
-                <TextView
-                    android:id="@+id/textview_attackername_2"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    style="@style/player_name_style"
-                    android:text="@string/ks_playername_attacker_2"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginTop="8dp"
-                    />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_3A"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_3B"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_3B"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_3C"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_3C"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_3D"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_3D"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="240dp">
-
-                <TextView
-                    android:id="@+id/textview_attackername_3"
-                    android:layout_width="200dp"
-                    android:layout_height="48dp"
-                    style="@style/player_name_style"
-                    android:gravity="center"
-                    android:text="@string/ks_playername_attacker_3"
-                    android:layout_marginStart="128dp"
-                    android:layout_marginTop="8dp"
-                    />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_4A"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_4B"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_4B"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_4C"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_4C"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_toStartOf="@id/goal_button_4D"
-                    android:layout_marginEnd="16dp"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/goal_button_4D"
-                    android:layout_width="@dimen/scorebutton_width"
-                    android:layout_height="@dimen/scorebutton_height"
-                    android:layout_alignParentEnd="true"
-                    android:text="@string/ks_goal_button"
-                    style="@style/scorebutton_style"
-                    />
-
-            </RelativeLayout>
-
-
-
-        </RelativeLayout>
-
     </RelativeLayout>
+
+
 
     <!--Options Overlay-->
     <FrameLayout
@@ -396,16 +415,16 @@
 
 
 
-    </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:textColor="#CCC"
+            android:text="Click outside of box to return"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:textColor="#CCC"
-        android:text="Click outside of box to return"/>
+    </FrameLayout>
 
 
 

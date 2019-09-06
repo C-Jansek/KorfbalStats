@@ -23,6 +23,7 @@ public class MatchFragment extends Fragment {
 
     // ---- Initialization ----
     private Match thisMatch;
+    private static List<Player> allPlayers = new ArrayList<>();
 
     // ---- End of Initialization ----
 
@@ -61,7 +62,11 @@ public class MatchFragment extends Fragment {
                 button_4A, button_4B, button_4C, button_4D,
                 undoButton, changesSidesButton);
 
+        if (allPlayers.isEmpty()) {
+            createPlayers();
+        }
         thisMatch = new Match("Gemini 1", "KV Arena 1", "20190831 16:30", view);
+
 
 
         for (Player p:thisMatch.getPlayers()) {
@@ -70,11 +75,29 @@ public class MatchFragment extends Fragment {
         return view;
     }
 
+
     public void replaceFragment(Fragment someFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.match_fragment, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private void createPlayers() {
+        Player david = new Player("David");
+        Player christiaan = new Player("Christiaan");
+        Player michelle = new Player("Michelle");
+        Player lysanne = new Player("Lysanne");
+        Player bertJan = new Player("Bert-Jan");
+        Player gijs = new Player("Gijs");
+        Player ingrid = new Player("Ingrid");
+        Player wieke = new Player("Wieke");
+
+        System.out.println("Created following players: " + allPlayers);
+    }
+
+    public static void addToAllPlayers(Player p) {
+        allPlayers.add(p);
     }
 
     private void configureButtons(final View view,
@@ -92,6 +115,15 @@ public class MatchFragment extends Fragment {
             }
         });
 
+        //   vv   THIS BUTTON HAS TESTING PURPOSES   vv
+        MaterialButton substitutionButton = view.findViewById(R.id.substitution_button);
+        substitutionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println(allPlayers);
+            }
+        });
+
         final FrameLayout optionsOverlay = view.findViewById(R.id.options_overlay);
         optionsOverlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,277 +132,23 @@ public class MatchFragment extends Fragment {
             }
         });
 
-        //#TODO save data after match (button)
-        //#TODO make user able to change players with
-
-        //Player 1
-        //Button 1A
-        button_1A.setOnClickListener(new View.OnClickListener() {
+        MaterialButton saveButton = view.findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                thisMatch.attackers.get(0).addSingleShot(0);
-                thisMatch.onShot(thisMatch.attackers.get(0), 0,false);
-            }
-        });
-        button_1A.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(0).addSingleGoal(0);
-                return false;
+                Saver thisSaver = new Saver(thisMatch, getContext());
             }
         });
 
-        //Button 1B
-        button_1B.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(0).addSingleShot(1);
-                thisMatch.onShot(thisMatch.attackers.get(0), 1,false);
-            }
-        });
-        button_1B.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(0).addSingleGoal(1);
-                return false;
-            }
-        });
-
-        //Button 1C
-        button_1C.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(0).addSingleShot(2);
-                thisMatch.onShot(thisMatch.attackers.get(0), 2,false);
-            }
-        });
-        button_1C.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(0).addSingleGoal(2);
-                return false;
-            }
-        });
-
-        //Button 1D
-        button_1D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(0).addSingleShot(3);
-                thisMatch.onShot(thisMatch.attackers.get(0), 3,false);
-            }
-        });
-        button_1D.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(0).addSingleGoal(3);
-                return false;
-            }
-        });
-
-        //Player 2
-        //Button 2A
-        button_2A.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(1).addSingleShot(0);
-                thisMatch.onShot(thisMatch.attackers.get(1), 0,false);
-            }
-        });
-        button_2A.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(1).addSingleGoal(0);
-                return false;
-            }
-        });
-
-        //Button 2B
-        button_2B.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(1).addSingleShot(1);
-                thisMatch.onShot(thisMatch.attackers.get(1), 1,false);
-            }
-        });
-        button_2B.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(1).addSingleGoal(1);
-                return false;
-            }
-        });
-
-        //Button 2C
-        button_2C.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(1).addSingleShot(2);
-                thisMatch.onShot(thisMatch.attackers.get(1), 2,false);
-            }
-        });
-        button_2C.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(1).addSingleGoal(2);
-                return false;
-            }
-        });
-
-        //Button 2D
-        button_2D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(1).addSingleShot(3);
-                thisMatch.onShot(thisMatch.attackers.get(1), 3,false);
-            }
-        });
-        button_2D.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(1).addSingleGoal(3);
-                return false;
-            }
-        });
-
-        //Player 3
-        //Button 3A
-        button_3A.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(2).addSingleShot(0);
-                thisMatch.onShot(thisMatch.attackers.get(2), 0,false);
-            }
-        });
-        button_3A.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(2).addSingleGoal(0);
-                return false;
-            }
-        });
-
-        //Button 3B
-        button_3B.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(2).addSingleShot(1);
-                thisMatch.onShot(thisMatch.attackers.get(2), 1,false);
-            }
-        });
-        button_3B.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(2).addSingleGoal(1);
-                return false;
-            }
-        });
-
-        //Button 3C
-        button_3C.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(2).addSingleShot(2);
-                thisMatch.onShot(thisMatch.attackers.get(2), 2,false);
-            }
-        });
-        button_3C.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(2).addSingleGoal(2);
-                return false;
-            }
-        });
-
-        //Button 3D
-        button_3D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(2).addSingleShot(3);
-                thisMatch.onShot(thisMatch.attackers.get(2), 3,false);
-            }
-        });
-        button_3D.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(2).addSingleGoal(3);
-                return false;
-            }
-        });
-
-        //Player 4
-        //Button 4A
-        button_4A.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(3).addSingleShot(0);
-                thisMatch.onShot(thisMatch.attackers.get(3), 0,false);
-            }
-        });
-        button_4A.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(3).addSingleGoal(0);
-                return false;
-            }
-        });
-
-        //Button 4B
-        button_4B.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(3).addSingleShot(1);
-                thisMatch.onShot(thisMatch.attackers.get(3), 1,false);
-            }
-        });
-        button_4B.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(3).addSingleGoal(1);
-                return false;
-            }
-        });
-
-        //Button 4C
-        button_4C.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(3).addSingleShot(2);
-                thisMatch.onShot(thisMatch.attackers.get(3), 2,false);
-            }
-        });
-        button_4C.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(3).addSingleGoal(2);
-                return false;
-            }
-        });
-
-        //Button 4D
-        button_4D.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                thisMatch.attackers.get(3).addSingleShot(3);
-                thisMatch.onShot(thisMatch.attackers.get(3), 3,false);
-            }
-        });
-        button_4D.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                thisMatch.attackers.get(3).addSingleGoal(3);
-                return false;
-            }
-        });
-
-
+        //   vv   THIS BUTTON HAS TESTING PURPOSES   vv
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Clicked on undo button!");
-                for (Player p:thisMatch.getPlayers()) {
-                    p.printPlayerStats();
-                }
+//                for (Player p:thisMatch.getPlayers()) {
+//                    p.printPlayerStats();
+//                }
+                thisMatch.onUndo();
             }
         });
 
@@ -381,6 +159,285 @@ public class MatchFragment extends Fragment {
                 thisMatch.setPlayerNameTextViews();
             }
         });
+
+        //#TODO make user able to change players with
+
+        //Player 1
+        //Button 1A
+        button_1A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleShot(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 0,false);
+            }
+        });
+        button_1A.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleGoal(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 0,true);
+                return false;
+            }
+        });
+
+        //Button 1B
+        button_1B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleShot(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 1,false);
+            }
+        });
+        button_1B.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleGoal(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 1,true);
+                return false;
+            }
+        });
+
+        //Button 1C
+        button_1C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleShot(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 2,false);
+            }
+        });
+        button_1C.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleGoal(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 2,true);
+                return false;
+            }
+        });
+
+        //Button 1D
+        button_1D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleShot(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 3,false);
+            }
+        });
+        button_1D.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(0).addSingleGoal(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(0), 3,true);
+                return false;
+            }
+        });
+
+        //Player 2
+        //Button 2A
+        button_2A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleShot(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 0,false);
+            }
+        });
+        button_2A.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleGoal(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 0,true);
+                return false;
+            }
+        });
+
+        //Button 2B
+        button_2B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleShot(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 1,false);
+            }
+        });
+        button_2B.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleGoal(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 1,true);
+                return false;
+            }
+        });
+
+        //Button 2C
+        button_2C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleShot(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 2,false);
+            }
+        });
+        button_2C.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleGoal(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 2,true);
+                return false;
+            }
+        });
+
+        //Button 2D
+        button_2D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleShot(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 3,false);
+            }
+        });
+        button_2D.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(1).addSingleGoal(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(1), 3,true);
+                return false;
+            }
+        });
+
+        //Player 3
+        //Button 3A
+        button_3A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleShot(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 0,false);
+            }
+        });
+        button_3A.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleGoal(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 0,true);
+                return false;
+            }
+        });
+
+        //Button 3B
+        button_3B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleShot(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 1,false);
+            }
+        });
+        button_3B.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleGoal(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 1,true);
+                return false;
+            }
+        });
+
+        //Button 3C
+        button_3C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleShot(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 2,false);
+            }
+        });
+        button_3C.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleGoal(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 2,true);
+                return false;
+            }
+        });
+
+        //Button 3D
+        button_3D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleShot(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 3,false);
+            }
+        });
+        button_3D.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(2).addSingleGoal(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(2), 3,true);
+                return false;
+            }
+        });
+
+        //Player 4
+        //Button 4A
+        button_4A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleShot(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 0,false);
+            }
+        });
+        button_4A.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleGoal(0);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 0,true);
+                return false;
+            }
+        });
+
+        //Button 4B
+        button_4B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleShot(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 1,false);
+            }
+        });
+        button_4B.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleGoal(1);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 1,true);
+                return false;
+            }
+        });
+
+        //Button 4C
+        button_4C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleShot(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 2,false);
+            }
+        });
+        button_4C.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleGoal(2);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 2,true);
+                return false;
+            }
+        });
+
+        //Button 4D
+        button_4D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleShot(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 3,false);
+            }
+        });
+        button_4D.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                thisMatch.getAttackers().get(3).addSingleGoal(3);
+                thisMatch.onShot(thisMatch.getAttackers().get(3), 3,true);
+                return false;
+            }
+        });
+
 
 
         // --- Create buttons via List, try ---
@@ -442,11 +499,11 @@ public class MatchFragment extends Fragment {
 //
 //
 //
-//    //Getters and Setters
-//
-//    public List<Player> getPlayers() {
-//        return players;
-//    }
+    //Getters and Setters
+
+    public static List<Player> getAllPlayers() {
+        return allPlayers;
+    }
 
 }
 

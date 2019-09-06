@@ -10,13 +10,14 @@ import java.util.List;
 public class Player {
     private String playerName;
     private int playerNo;
-    private int amountOfShotTypes = 4;
+    private int amountOfShotTypes = Match.getAmountOfShotTypes();
     private List<List<Integer>> playerStats;
 
 
     public Player (String name) {
         playerName = name;
         playerNo = createPlayerNo();
+        MatchFragment.addToAllPlayers(this);
 
         resetPlayerStats();
     }
@@ -41,8 +42,7 @@ public class Player {
 
 
     private int createPlayerNo() {
-        Match.getPlayers();
-        int number = Match.getPlayers().size() + 1;
+        int number = MatchFragment.getAllPlayers().size() + 1;
         return number;
     }
 
@@ -51,11 +51,15 @@ public class Player {
     }
     public void addSingleGoal(int shotType) {
         playerStats.get(shotType).set(1, playerStats.get(shotType).get(1) + 1);
+
+        System.out.println("GOAL ADDED TO BACKTRACK");
     }
 
     public void removeSingleShot(int shotType, boolean isGoal) {
         playerStats.get(shotType).set(0, playerStats.get(shotType).get(0) - 1);
-        if (isGoal) {playerStats.get(shotType).set(1, playerStats.get(shotType).get(0) - 1);}
+        int newGoalScore = playerStats.get(shotType).get(1) - 1;
+        System.out.println("Removed " + playerNo + "\t" + shotType + "\t" + isGoal + "\n Old Score: " + playerStats.get(shotType).get(1) + "\t\t New Score: "+ newGoalScore);
+        if (isGoal) {playerStats.get(shotType).set(1, newGoalScore);}
     }
 
 
@@ -89,5 +93,6 @@ public class Player {
     public int getPlayerNo() {
         return playerNo;
     }
+
     // End of Getters and Setters
 }

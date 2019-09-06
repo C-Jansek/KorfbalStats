@@ -10,12 +10,13 @@ import java.util.List;
 
 public class Match {
     private View view;
+    private static int amountOfShotTypes = 4;
     private String homeTeam;
     private String awayTeam;
     private String matchDate;
-    static List<Player> players;
-    static List<Player> attackers;
-    static List<Player> defenders;
+    private List<Player> players;
+    private List<Player> attackers;
+    private List<Player> defenders;
 
     //Buttons
     MaterialButton button_1A;
@@ -43,35 +44,28 @@ public class Match {
         awayTeam = away;
         matchDate = date;
         view = thisView;
-        createPlayers();
+        addPlayers();
         initButtons();
     }
 
-    private void createPlayers() {
+    private void addPlayers() {
         players = new ArrayList<>();
         attackers = new ArrayList<>();
         defenders = new ArrayList<>();
-        Player david = new Player("David");
-        players.add(david);
-        Player christiaan = new Player("Christiaan");
-        players.add(christiaan);
-        Player michelle = new Player("Michelle");
-        players.add(michelle);
-        Player lysanne = new Player("Lysanne");
-        players.add(lysanne);
-        Player bertJan = new Player("Bert-Jan");
-        players.add(bertJan);
-        Player gijs = new Player("Gijs");
-        players.add(gijs);
-        Player ingrid = new Player("Ingrid");
-        players.add(ingrid);
-        Player wieke = new Player("Wieke");
-        players.add(wieke);
-
-        System.out.println("Created following players: " + players);
+        if (!MatchFragment.getAllPlayers().isEmpty()) {
+            players.add(MatchFragment.getAllPlayers().get(0));
+            players.add(MatchFragment.getAllPlayers().get(1));
+            players.add(MatchFragment.getAllPlayers().get(2));
+            players.add(MatchFragment.getAllPlayers().get(3));
+            players.add(MatchFragment.getAllPlayers().get(4));
+            players.add(MatchFragment.getAllPlayers().get(5));
+            players.add(MatchFragment.getAllPlayers().get(6));
+            players.add(MatchFragment.getAllPlayers().get(7));
+        }
         createSides();
         setPlayerNameTextViews();
     }
+
 
     public void setPlayerNameTextViews() {
         TextView textviewAttacker0 = view.findViewById(R.id.textview_attackername_0);
@@ -133,7 +127,7 @@ public class Match {
         setButtonText();
     }
 
-    private void setButtonText() {
+    public void setButtonText() {
         button_1A.setText(attackers.get(0).getPlayerStats().get(0).get(1) + " / " + attackers.get(0).getPlayerStats().get(0).get(0));
         button_1B.setText(attackers.get(0).getPlayerStats().get(1).get(1) + " / " + attackers.get(0).getPlayerStats().get(1).get(0));
         button_1C.setText(attackers.get(0).getPlayerStats().get(2).get(1) + " / " + attackers.get(0).getPlayerStats().get(2).get(0));
@@ -158,10 +152,18 @@ public class Match {
 
     //#TODO Implement Backtracking
     List<Integer> backTrack = new ArrayList<>();
+    boolean justScored = false;
 
     public void onShot(Player player, int shotType, boolean isGoal) {
-        addBacktrack(player, shotType, isGoal);
         setButtonText();
+        if(justScored) {
+            System.out.println("SHOT NOT ADDED TO BACKTRACK");
+            justScored = false;
+            return;
+        }
+        if (isGoal) {justScored = true;}
+        addBacktrack(player, shotType, isGoal);
+
     }
 
     private void addBacktrack(Player player, int shotType, boolean isGoal) {
@@ -173,15 +175,18 @@ public class Match {
         backTrack.add(thisTrack);
     }
 
-    private void onUndo() {
-        if (backTrack.isEmpty()) {return;};
+    public void onUndo() {
+        if (backTrack.isEmpty()) {return;}
         int last = backTrack.get(backTrack.size() - 1);
         int playerNo = last / (16 * 16);
         Player thisPlayer = Player.byNo(playerNo, players);
-        int thisShotType = (last - playerNo) / 16;
+        int thisShotType = (last - playerNo*16*16) / 16;
         boolean isGoal = false;
         if ((last%2)==1) {isGoal = true;}
         thisPlayer.removeSingleShot(thisShotType, isGoal);
+        setButtonText();
+        backTrack.remove(backTrack.size() -1);
+        System.out.println("Undo " + Integer.toHexString(last) + "\n PlayerNo, shotType, goal:" + playerNo + "\t" + thisShotType + "\t" + isGoal);
     }
 
 
@@ -197,19 +202,22 @@ public class Match {
     public String getMatchDate() {
         return matchDate;
     }
-    public static List<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
-    public static List<Player> getAttackers() {
+    public List<Player> getAttackers() {
         return attackers;
     }
-    public static void setAttackers(List<Player> attackers) {
-        Match.attackers = attackers;
+    public void setAttackers(List<Player> attackers) {
+        this.attackers = attackers;
     }
-    public static List<Player> getDefenders() {
+    public List<Player> getDefenders() {
         return defenders;
     }
-    public static void setDefenders(List<Player> attackers) {
-        Match.defenders = attackers;
+    public void setDefenders(List<Player> attackers) {
+        this.defenders = attackers;
+    }
+    public static int getAmountOfShotTypes() {
+        return amountOfShotTypes;
     }
 }
