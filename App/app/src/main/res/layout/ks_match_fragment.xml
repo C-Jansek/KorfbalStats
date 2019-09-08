@@ -438,8 +438,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#99000000"
-        android:padding="24dp"
-        android:visibility="gone"
+        android:padding="8dp"
+        android:visibility="visible"
         >
 
         <LinearLayout
@@ -472,7 +472,7 @@
                     android:text="Substitutes"
                     style="@style/player_name_style"
                     android:layout_weight="1"
-                    android:layout_marginStart="72dp"
+                    android:layout_marginStart="56dp"
                     />
 
             </LinearLayout>
@@ -502,21 +502,21 @@
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/substitute_button"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        app:iconSize="64dp"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        app:iconSize="40dp"
                         app:icon="@drawable/substitution_icon"
                         android:enabled="false"
                         android:layout_gravity="center"
                         app:iconPadding="0dp"
                         app:iconGravity="textStart"
-                        android:layout_marginBottom="24dp"/>
+                        android:layout_marginBottom="8dp"/>
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/cancel_button"
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        app:iconSize="48dp"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        app:iconSize="40dp"
                         app:icon="@drawable/cancel_icon"
                         style="@style/cancel_button_style"
                         android:layout_gravity="center"

@@ -3,4 +3,6 @@
     <dimen name="scorebutton_width">64dp</dimen>
     <dimen name="scorebutton_height">64dp</dimen>
 
+    <dimen name="lvItemHeight">48dp</dimen>
+    <dimen name="lvVerticalDividerHeight">36dp</dimen>
 </resources>

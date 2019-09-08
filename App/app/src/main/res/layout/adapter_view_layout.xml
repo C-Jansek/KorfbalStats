@@ -1,27 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/lvItemHeight">
 
-    <TextView
-        android:id="@+id/playername_textView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="Playername"
-        android:textAlignment="center"
-        style="@style/player_name_style"
-        android:gravity="center"
-        android:layout_weight="30"/>
-    <TextView
-        android:id="@+id/playerSex_textView"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="G"
-        android:textAlignment="center"
-        style="@style/player_name_style"
-        android:gravity="center"
-        android:layout_weight="70"
-        android:textSize="18sp"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/playername_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Playername"
+            android:textAlignment="center"
+            style="@style/player_name_style"
+            android:layout_centerVertical="true"
+            android:paddingStart="16dp"
+            android:textSize="22sp"
+            android:layout_toStartOf="@id/playerSex_textView"
+            android:layout_toEndOf="@id/sex_idicator"/>
+
+        <TextView
+            android:id="@+id/playerSex_textView"
+            style="@style/player_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:text="G"
+            android:textAlignment="center"
+            android:textSize="18sp"/>
+
+        <View
+            android:id="@+id/item_separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:background="@color/colorBackground"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
+        <View
+            android:id="@+id/sex_idicator"
+            android:layout_width="4dp"
+            android:layout_height="@dimen/lvVerticalDividerHeight"
+            android:layout_centerVertical="true"
+            android:background="@drawable/listview_sex_indicator"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            />
+
+    </RelativeLayout>
 
 
 </LinearLayout>

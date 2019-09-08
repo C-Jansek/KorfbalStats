@@ -50,13 +50,13 @@ public class Match {
     }
 
     private void addPlayers() {
-        players = new ArrayList<>();
-        attackers = new ArrayList<>();
-        defenders = new ArrayList<>();
-        substitutes = new ArrayList<>();
+        this.players = new ArrayList<>();
+        this.attackers = new ArrayList<>();
+        this.defenders = new ArrayList<>();
+        this.substitutes = new ArrayList<>();
         if (!MatchFragment.getAllPlayers().isEmpty()) {
             for(Player p: MatchFragment.getAllPlayers()) {
-                players.add(p);
+                this.players.add(p);
             }
         }
         createSides();
@@ -99,13 +99,13 @@ public class Match {
 
     private void createSides() {
         for(int i=0;i<4;i++) {
-            attackers.add(players.get(i));
+            this.attackers.add(players.get(i));
         }
         for(int i=4;i<8;i++) {
-            defenders.add(players.get(i));
+            this.defenders.add(players.get(i));
         }
         for(int i=8; i < players.size();i++) {
-            substitutes.add(players.get(i));
+            this.substitutes.add(players.get(i));
         }
 
 
@@ -150,7 +150,6 @@ public class Match {
 
     }
 
-    //#TODO Implement Backtracking
     List<Integer> backTrack = new ArrayList<>();
     boolean justScored = false;
 
@@ -169,7 +168,7 @@ public class Match {
     private void addBacktrack(Player player, int shotType, boolean isGoal) {
         // -- Add shot to Backtracker
         int thisTrack;
-        thisTrack = player.getPlayerNo() * 16 * 16 +
+        thisTrack = player.getId() * 16 * 16 +
                 shotType * 16;
         if (isGoal) {thisTrack++;}
         backTrack.add(thisTrack);
@@ -178,15 +177,15 @@ public class Match {
     public void onUndo() {
         if (backTrack.isEmpty()) {return;}
         int last = backTrack.get(backTrack.size() - 1);
-        int playerNo = last / (16 * 16);
-        Player thisPlayer = Player.byNo(playerNo, players);
-        int thisShotType = (last - playerNo*16*16) / 16;
+        int id = last / (16 * 16);
+        Player thisPlayer = Player.byId(id, players);
+        int thisShotType = (last - id*16*16) / 16;
         boolean isGoal = false;
         if ((last%2)==1) {isGoal = true;}
         thisPlayer.removeSingleShot(thisShotType, isGoal);
         setButtonText();
         backTrack.remove(backTrack.size() -1);
-        System.out.println("Undo " + Integer.toHexString(last) + "\n PlayerNo, shotType, goal:" + playerNo + "\t" + thisShotType + "\t" + isGoal);
+        System.out.println("Undo " + Integer.toHexString(last) + "\n id, shotType, goal:" + id + "\t" + thisShotType + "\t" + isGoal);
     }
 
 

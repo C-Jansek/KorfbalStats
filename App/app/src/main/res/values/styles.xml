@@ -21,4 +21,9 @@
         <item name="iconTint">@color/colorAccent</item>
     </style>
 
+    <style name="list_view_item">
+        <item name="android:layout_height">@dimen/lvItemHeight</item>
+        <item name="android:clickable">true</item>
+    </style>
+
 </resources>

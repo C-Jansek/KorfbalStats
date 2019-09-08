@@ -33,7 +33,7 @@ public class Saver extends Activity {
             outputStream.write(fileContents.getBytes());
             for (Player p : matchPlayers) {
                 outputStream.write(addStats(p).getBytes());
-//                String title = p.getPlayerName() + " with No " + p.getPlayerNo() + " has the following stats: \n";
+//                String title = p.getPlayerName() + " with No " + p.getId() + " has the following stats: \n";
 //                outputStream.write(title.getBytes());
 //                int i = 1;
 //                for (List<Integer> thisList:p.getPlayerStats()) {
@@ -53,7 +53,7 @@ public class Saver extends Activity {
     }
 
     private String addStats(Player p) {
-        String output = p.getPlayerName() + "," + p.getPlayerNo() + ",";
+        String output = p.getPlayerName() + "," + p.getId() + ",";
         for (List<Integer> thisList : p.getPlayerStats()) {
             output = output + thisList.get(1) + "," + thisList.get(0) + ",";
         }
@@ -62,7 +62,7 @@ public class Saver extends Activity {
     }
 
     private String printHeader() {
-        String output = "PlayerName,PlayerNo,";
+        String output = "PlayerName,Id,";
         for (int i = 0; i < Match.getAmountOfShotTypes(); i++) {
             output = output + "Shot type," + (i + 1) + ",";
         }

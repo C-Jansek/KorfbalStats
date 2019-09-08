@@ -1,7 +1,6 @@
 package com.jansek.korfbalstats;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,13 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class CurrentPlayersListAdapter extends ArrayAdapter<Player> {
+public class SubstitutesListAdapter extends ArrayAdapter<Player> {
 
     private Context mContext;
     int mResource;
 
-    public CurrentPlayersListAdapter(Context context, int resource, ArrayList<Player> currentPlayers) {
-        super(context, resource, currentPlayers);
+    public SubstitutesListAdapter(Context context, int resource, ArrayList<Player> substitutes) {
+        super(context, resource, substitutes);
         mContext = context;
         mResource = resource;
     }
@@ -30,7 +29,6 @@ public class CurrentPlayersListAdapter extends ArrayAdapter<Player> {
         String playerName = getItem(position).getPlayerName();
         String playerSex = getItem(position).getSex();
 
-
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
@@ -38,6 +36,7 @@ public class CurrentPlayersListAdapter extends ArrayAdapter<Player> {
             View vSexIndicator = (View) convertView.findViewById(R.id.sex_idicator);
             vSexIndicator.setBackground(mContext.getResources().getDrawable(R.drawable.listview_sex_indicator_male));
         }
+
         TextView tvPlayerName = (TextView) convertView.findViewById(R.id.playername_textView);
         TextView tvPlayerSex = (TextView) convertView.findViewById(R.id.playerSex_textView);
 
@@ -45,15 +44,5 @@ public class CurrentPlayersListAdapter extends ArrayAdapter<Player> {
         tvPlayerSex.setText(playerSex);
 
         return convertView;
-    }
-
-    @Override
-    public boolean areAllItemsEnabled() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return true;
     }
 }

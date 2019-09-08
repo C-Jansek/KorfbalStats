@@ -105,18 +105,39 @@ public class MatchFragment extends Fragment {
         Player wieke = new Player("Wieke(sub)", "D");
         Player lysanne = new Player("Lysanne(sub)", "D");
         Player andre = new Player("André(sub)", "H");
+        Player christiaan = new Player("Christiaan(sub)", "H");
+        Player sebastiaan = new Player("Sebastiaan(sub)", "H");
 
         System.out.println("Created following players: " + allPlayers);
     }
 
     private void configureLists(ListView currentPlayersLV, ListView substitutesLV) {
-        ArrayList<Player> currentPlayers = (ArrayList<Player>) thisMatch.getAttackers();
+        ArrayList<Player> currentPlayers = new ArrayList<>();
+        ArrayList<Player> substitutes = new ArrayList<>();
         for (Player def:thisMatch.getDefenders()) {
             currentPlayers.add(def);
+        }
+        for (Player att:thisMatch.getAttackers()) {
+            currentPlayers.add(att);
+        }
+        for (Player sub:thisMatch.getSubstitutes()) {
+            substitutes.add(sub);
         }
 
         CurrentPlayersListAdapter currentPlayersAdapter = new CurrentPlayersListAdapter(getContext(), R.layout.adapter_view_layout, currentPlayers);
         currentPlayersLV.setAdapter(currentPlayersAdapter);
+
+        SubstitutesListAdapter substitutesAdapter = new SubstitutesListAdapter(getContext(), R.layout.adapter_view_layout, substitutes);
+        substitutesLV.setAdapter(substitutesAdapter);
+
+        //Styling
+        currentPlayersLV.setBackgroundResource(R.drawable.listview_background_rounded_corner);
+        currentPlayersLV.setDivider(null);
+        currentPlayersLV.setDividerHeight(0);
+        substitutesLV.setBackgroundResource(R.drawable.listview_background_rounded_corner);
+        substitutesLV.setDivider(null);
+        substitutesLV.setDividerHeight(0);
+
     }
 
     public static void addToAllPlayers(Player p) {
@@ -196,7 +217,9 @@ public class MatchFragment extends Fragment {
             }
         });
 
-        //#TODO make user able to change players with
+        //#TODO make user able to change players
+        //#TODO make subs selectable and enable button on both currentPlayer and sub selected
+        //#TODO List styling, based partialy on https://github.com/steprobe/ListDemo
 
         //Player 1
         //Button 1A
@@ -516,7 +539,7 @@ public class MatchFragment extends Fragment {
 //    private void onShot(Player player, int shotType, boolean isGoal) {
 //        // -- Add shot to Backtracker
 //        int thisTrack;
-//        thisTrack = player.getPlayerNo() * 16 * 16 +
+//        thisTrack = player.getId() * 16 * 16 +
 //                shotType * 16;
 //        if (isGoal) {thisTrack++;}
 //        backTrack.add(thisTrack);
@@ -525,9 +548,9 @@ public class MatchFragment extends Fragment {
 //    private void onUndo() {
 //        if (backTrack.isEmpty()) {return};
 //        int last = backTrack.get(backTrack.size() - 1);
-//        int playerNo = last / (16 * 16);
-//        Player thisPlayer = Player.byNo(playerNo, players);
-//        int thisShotType = (last - playerNo) / 16;
+//        int id = last / (16 * 16);
+//        Player thisPlayer = Player.byNo(id, players);
+//        int thisShotType = (last - id) / 16;
 //        boolean isGoal = false;
 //        if ((last%2)==1) {isGoal = true;}
 //        thisPlayer.removeSingleShot(thisShotType, isGoal);

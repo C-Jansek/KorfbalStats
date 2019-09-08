@@ -5,4 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorBackground">#B4B4B4</color>
     <color name="colorBackgroundSecond">#D7D7D7</color>
+
+    <color name="colorMale">#2196F3</color>
+
+    <color name="lvDividerColor">#E0E0E0</color>
 </resources>
