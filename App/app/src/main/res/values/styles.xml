@@ -16,5 +16,9 @@
         <item name="android:textSize">24sp</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
     </style>
+    <style name="cancel_button_style" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="iconTint">@color/colorAccent</item>
+    </style>
 
 </resources>

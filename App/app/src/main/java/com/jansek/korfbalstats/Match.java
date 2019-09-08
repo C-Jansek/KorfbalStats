@@ -17,6 +17,7 @@ public class Match {
     private List<Player> players;
     private List<Player> attackers;
     private List<Player> defenders;
+    private List<Player> substitutes;
 
     //Buttons
     MaterialButton button_1A;
@@ -52,15 +53,11 @@ public class Match {
         players = new ArrayList<>();
         attackers = new ArrayList<>();
         defenders = new ArrayList<>();
+        substitutes = new ArrayList<>();
         if (!MatchFragment.getAllPlayers().isEmpty()) {
-            players.add(MatchFragment.getAllPlayers().get(0));
-            players.add(MatchFragment.getAllPlayers().get(1));
-            players.add(MatchFragment.getAllPlayers().get(2));
-            players.add(MatchFragment.getAllPlayers().get(3));
-            players.add(MatchFragment.getAllPlayers().get(4));
-            players.add(MatchFragment.getAllPlayers().get(5));
-            players.add(MatchFragment.getAllPlayers().get(6));
-            players.add(MatchFragment.getAllPlayers().get(7));
+            for(Player p: MatchFragment.getAllPlayers()) {
+                players.add(p);
+            }
         }
         createSides();
         setPlayerNameTextViews();
@@ -106,6 +103,9 @@ public class Match {
         }
         for(int i=4;i<8;i++) {
             defenders.add(players.get(i));
+        }
+        for(int i=8; i < players.size();i++) {
+            substitutes.add(players.get(i));
         }
 
 
@@ -214,8 +214,14 @@ public class Match {
     public List<Player> getDefenders() {
         return defenders;
     }
-    public void setDefenders(List<Player> attackers) {
-        this.defenders = attackers;
+    public void setDefenders(List<Player> defenders) {
+        this.defenders = defenders;
+    }
+    public List<Player> getSubstitutes() {
+        return substitutes;
+    }
+    public void setSubstitutes(List<Player> substitutes) {
+        this.substitutes = substitutes;
     }
     public static int getAmountOfShotTypes() {
         return amountOfShotTypes;

@@ -9,13 +9,15 @@ import java.util.List;
 
 public class Player {
     private String playerName;
+    private String sex;
     private int playerNo;
     private int amountOfShotTypes = Match.getAmountOfShotTypes();
     private List<List<Integer>> playerStats;
 
 
-    public Player (String name) {
-        playerName = name;
+    public Player (String playerName, String sex) {
+        this.playerName = playerName;
+        this.sex = sex;
         playerNo = createPlayerNo();
         MatchFragment.addToAllPlayers(this);
 
@@ -92,6 +94,10 @@ public class Player {
 
     public int getPlayerNo() {
         return playerNo;
+    }
+
+    public String getSex() {
+        return sex;
     }
 
     // End of Getters and Setters

@@ -1,5 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBackground">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="Current Players"
+            style="@style/player_name_style"
+            android:layout_weight="1"
+            android:layout_marginEnd="72dp"
+            />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:text="Substitutes"
+            style="@style/player_name_style"
+            android:layout_weight="1"
+            android:layout_marginStart="72dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="24dp">
+
+        <ListView
+            android:id="@+id/current_players_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBackgroundSecond"
+            >
+        </ListView>
+
+<!--        VV Middle Buttons VV       -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_margin="24dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/substitute_button"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:iconSize="64dp"
+            app:icon="@drawable/substitution_icon"
+            android:enabled="false"
+            android:layout_gravity="center"
+            app:iconPadding="0dp"
+            app:iconGravity="textStart"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_button"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            app:iconSize="48dp"
+            app:icon="@drawable/cancel_icon"
+            style="@style/cancel_button_style"
+            android:layout_gravity="center"
+            app:iconPadding="0dp"
+            app:iconGravity="textStart"/>
+        </LinearLayout>
+        <!--        End Middle Buttons      -->
+
+        <ListView
+            android:id="@+id/substitutes_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/colorBackgroundSecond"
+            >
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

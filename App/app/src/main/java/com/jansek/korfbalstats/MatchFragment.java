@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -62,11 +65,19 @@ public class MatchFragment extends Fragment {
                 button_4A, button_4B, button_4C, button_4D,
                 undoButton, changesSidesButton);
 
+        ListView currentPlayersLV = (ListView) view.findViewById(R.id.current_players_list);
+        ListView substitutionsLV = (ListView) view.findViewById(R.id.substitutes_list);
+
         if (allPlayers.isEmpty()) {
             createPlayers();
         }
-        thisMatch = new Match("Gemini 1", "KV Arena 1", "20190831 16:30", view);
+        thisMatch = new Match("Nexus 1", "Gemini 1", "20190907 15:30", view);
+        configureLists(currentPlayersLV, substitutionsLV);
 
+        //Print all players in match, in their function
+        System.out.println("Attackers: " + thisMatch.getAttackers() + "\n");
+        System.out.println("Defenders: " + thisMatch.getDefenders() + "\n");
+        System.out.println("Substitutes: " + thisMatch.getSubstitutes() + "\n");
 
 
         for (Player p:thisMatch.getPlayers()) {
@@ -74,7 +85,6 @@ public class MatchFragment extends Fragment {
         }
         return view;
     }
-
 
     public void replaceFragment(Fragment someFragment) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
@@ -84,16 +94,29 @@ public class MatchFragment extends Fragment {
     }
 
     private void createPlayers() {
-        Player david = new Player("David");
-        Player christiaan = new Player("Christiaan");
-        Player michelle = new Player("Michelle");
-        Player lysanne = new Player("Lysanne");
-        Player bertJan = new Player("Bert-Jan");
-        Player gijs = new Player("Gijs");
-        Player ingrid = new Player("Ingrid");
-        Player wieke = new Player("Wieke");
+        Player david = new Player("David", "H");
+        Player roelant = new Player("Roelant", "H");
+        Player nanda = new Player("Nanda", "D");
+        Player ingrid = new Player("Ingrid", "D");
+        Player bertJan = new Player("Bert-Jan", "H");
+        Player maiko = new Player("Maiko", "H");
+        Player michelle = new Player("Michelle", "D");
+        Player agnes = new Player("Agnes", "D");
+        Player wieke = new Player("Wieke(sub)", "D");
+        Player lysanne = new Player("Lysanne(sub)", "D");
+        Player andre = new Player("André(sub)", "H");
 
         System.out.println("Created following players: " + allPlayers);
+    }
+
+    private void configureLists(ListView currentPlayersLV, ListView substitutesLV) {
+        ArrayList<Player> currentPlayers = (ArrayList<Player>) thisMatch.getAttackers();
+        for (Player def:thisMatch.getDefenders()) {
+            currentPlayers.add(def);
+        }
+
+        CurrentPlayersListAdapter currentPlayersAdapter = new CurrentPlayersListAdapter(getContext(), R.layout.adapter_view_layout, currentPlayers);
+        currentPlayersLV.setAdapter(currentPlayersAdapter);
     }
 
     public static void addToAllPlayers(Player p) {
@@ -121,6 +144,19 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println(allPlayers);
+                LinearLayout ll = view.findViewById(R.id.substitutions_overlay);
+                ll.setVisibility(View.VISIBLE);
+            }
+        });
+
+        MaterialButton substitutionCancelButton = view.findViewById(R.id.cancel_button);
+        substitutionCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout ll = view.findViewById(R.id.substitutions_overlay);
+                ll.setVisibility(View.GONE);
+                FrameLayout fl = view.findViewById(R.id.options_overlay);
+                fl.setVisibility(View.GONE);
             }
         });
 

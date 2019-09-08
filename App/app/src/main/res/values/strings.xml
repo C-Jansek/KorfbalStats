@@ -1,7 +1,7 @@
 <resources>
     <string name="ks_app_name">Korfbal Stats</string>
     <string name="ks_app_slogan">Tracking matches</string>
-    <string name="ks_goal_button">X</string>
+    <string name="ks_goal_button">0 / 0</string>
     <string name="ks_textfield_name_hint">Name</string>
     <string name="ks_playername_attacker_0">Roelant</string>
     <string name="ks_playername_attacker_1">Wytse</string>
