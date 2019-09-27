@@ -111,7 +111,6 @@ public class PlayerChangeFragment extends Fragment {
         substituteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //#TODO substitute function: match.substitute(Player playerOut, Player playerIn);
                 thisMatch.substitute(playerOut, playerIn);
 
                 FragmentManager fragmentManager = getFragmentManager();

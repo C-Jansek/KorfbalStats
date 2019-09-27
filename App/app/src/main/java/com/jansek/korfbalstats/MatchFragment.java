@@ -158,6 +158,7 @@ public class MatchFragment extends Fragment {
         substitutesLV.setAdapter(substitutesAdapter);
 
         //Styling
+        //#TODO List styling, based partially on https://github.com/steprobe/ListDemo
         currentPlayersLV.setBackgroundResource(R.drawable.listview_background_rounded_corner);
         currentPlayersLV.setDivider(null);
         currentPlayersLV.setDividerHeight(0);
@@ -250,9 +251,6 @@ public class MatchFragment extends Fragment {
             }
         });
 
-        //#TODO make user able to change players
-        //#TODO make subs selectable and enable button on both currentPlayer and sub selected
-        //#TODO List styling, based partially on https://github.com/steprobe/ListDemo
 
         //Player 1
         //Button 1A

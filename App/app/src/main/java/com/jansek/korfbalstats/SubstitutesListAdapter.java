@@ -17,6 +17,8 @@ public class SubstitutesListAdapter extends ArrayAdapter<Player> {
     private Context mContext;
     int mResource;
 
+
+
     public SubstitutesListAdapter(Context context, int resource, ArrayList<Player> substitutes) {
         super(context, resource, substitutes);
         mContext = context;
