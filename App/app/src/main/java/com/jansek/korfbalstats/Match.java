@@ -5,10 +5,11 @@ import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Match {
+public class Match implements Serializable {
     private View view;
     private static int amountOfShotTypes = 4;
     private String homeTeam;

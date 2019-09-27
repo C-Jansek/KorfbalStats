@@ -15,6 +15,7 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.button.MaterialButton;
@@ -79,11 +80,26 @@ public class MatchFragment extends Fragment {
         System.out.println("Defenders: " + thisMatch.getDefenders() + "\n");
         System.out.println("Substitutes: " + thisMatch.getSubstitutes() + "\n");
 
-
         for (Player p:thisMatch.getPlayers()) {
             p.getPlayerStats();
         }
         return view;
+    }
+
+    public void openPlayerChangeFragment() {
+        Fragment newPCFragment = new PlayerChangeFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        Bundle bundle = new Bundle();
+        Match match = thisMatch;
+        bundle.putSerializable("currentMatch", match);
+        newPCFragment.setArguments(bundle);
+
+        fragmentTransaction.add(R.id.fragment_container, newPCFragment);
+        fragmentTransaction.addToBackStack(null);
+
+        fragmentTransaction.commit();
     }
 
     public void replaceFragment(Fragment someFragment) {
@@ -165,8 +181,9 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println(allPlayers);
-                LinearLayout ll = view.findViewById(R.id.substitutions_overlay);
-                ll.setVisibility(View.VISIBLE);
+//                LinearLayout ll = view.findViewById(R.id.substitutions_overlay);
+//                ll.setVisibility(View.VISIBLE);
+                openPlayerChangeFragment();
             }
         });
 
@@ -564,6 +581,9 @@ public class MatchFragment extends Fragment {
         return allPlayers;
     }
 
+    public Match getThisMatch() {
+        return thisMatch;
+    }
 }
 
 

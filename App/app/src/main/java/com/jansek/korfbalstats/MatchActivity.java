@@ -18,7 +18,9 @@ public class MatchActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .add(R.id.container, new MatchFragment())
+                    .addToBackStack(null)
                     .commit();
         }
     }
 }
+
