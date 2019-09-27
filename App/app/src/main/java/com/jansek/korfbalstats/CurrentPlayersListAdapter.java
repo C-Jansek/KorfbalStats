@@ -30,7 +30,6 @@ public class CurrentPlayersListAdapter extends ArrayAdapter<Player> {
         String playerName = getItem(position).getPlayerName();
         String playerSex = getItem(position).getSex();
 
-
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 

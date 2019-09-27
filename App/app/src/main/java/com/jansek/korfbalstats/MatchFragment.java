@@ -29,6 +29,8 @@ public class MatchFragment extends Fragment {
     private Match thisMatch;
     private static List<Player> allPlayers = new ArrayList<>();
 
+    private static View thisView;
+
     // ---- End of Initialization ----
 
 
@@ -83,6 +85,8 @@ public class MatchFragment extends Fragment {
         for (Player p:thisMatch.getPlayers()) {
             p.getPlayerStats();
         }
+
+        thisView = view;
         return view;
     }
 
@@ -158,6 +162,11 @@ public class MatchFragment extends Fragment {
 
     public static void addToAllPlayers(Player p) {
         allPlayers.add(p);
+    }
+
+    public static void hideOptionsOverlay() {
+        final FrameLayout optionsOverlay = thisView.findViewById(R.id.options_overlay);
+        optionsOverlay.setVisibility(View.GONE);
     }
 
     private void configureButtons(final View view,
@@ -236,7 +245,7 @@ public class MatchFragment extends Fragment {
 
         //#TODO make user able to change players
         //#TODO make subs selectable and enable button on both currentPlayer and sub selected
-        //#TODO List styling, based partialy on https://github.com/steprobe/ListDemo
+        //#TODO List styling, based partially on https://github.com/steprobe/ListDemo
 
         //Player 1
         //Button 1A

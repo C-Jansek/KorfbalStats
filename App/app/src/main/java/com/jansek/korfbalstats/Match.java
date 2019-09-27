@@ -76,6 +76,30 @@ public class Match implements Serializable {
         textviewAttacker3.setText(attackers.get(3).getPlayerName());
     }
 
+    public void substitute(Player playerOut, Player playerIn) {
+        if(this.attackers.contains(playerOut) && this.substitutes.contains(playerIn)) {
+            int attackerIndex = attackers.indexOf(playerOut);
+            attackers.remove(playerOut);
+            attackers.add(attackerIndex, playerIn);
+
+            int subIndex = substitutes.indexOf(playerIn);
+            substitutes.remove(playerIn);
+            substitutes.add(subIndex, playerOut);
+        }
+        if(this.defenders.contains(playerOut) && this.substitutes.contains(playerIn)) {
+            int defenderIndex = defenders.indexOf(playerOut);
+            defenders.remove(playerOut);
+            defenders.add(defenderIndex, playerIn);
+
+            int subIndex = substitutes.indexOf(playerIn);
+            substitutes.remove(playerIn);
+            substitutes.add(subIndex, playerOut);
+        }
+
+        setButtonText();
+        setPlayerNameTextViews();
+    }
+
     private void initButtons() {
         button_1A = view.findViewById(R.id.goal_button_1A);
         button_1B = view.findViewById(R.id.goal_button_1B);

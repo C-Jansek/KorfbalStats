@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -18,6 +19,16 @@ import java.util.ArrayList;
 public class PlayerChangeFragment extends Fragment {
 
     Match thisMatch;
+    ListView currentPlayersLV;
+    ListView substitutionsLV;
+
+    ArrayList<Player> currentPlayers;
+    ArrayList<Player> substitutes;
+
+    private Player playerOut;
+    private Player playerIn;
+
+    MaterialButton substituteBtn;
 
     @Override
     public View onCreateView(
@@ -28,21 +39,23 @@ public class PlayerChangeFragment extends Fragment {
         Bundle bundle = getArguments();
         thisMatch = (Match) bundle.getSerializable("currentMatch");
 
-        ListView currentPlayersLV = (ListView) view.findViewById(R.id.current_players_list);
-        ListView substitutionsLV = (ListView) view.findViewById(R.id.substitutes_list);
+        currentPlayersLV = (ListView) view.findViewById(R.id.current_players_list);
+        substitutionsLV = (ListView) view.findViewById(R.id.substitutes_list);
         configureLists(currentPlayersLV, substitutionsLV);
 
-        MaterialButton substituteBtn = view.findViewById(R.id.substitute_button);
+        substituteBtn = view.findViewById(R.id.substitute_button);
         MaterialButton cancelBtn = view.findViewById(R.id.cancel_button);
 
         configureButtons(substituteBtn, cancelBtn);
 
+
+
         return view;
     }
 
-    private void configureLists(ListView currentPlayersLV, ListView substitutesLV) {
-        ArrayList<Player> currentPlayers = new ArrayList<>();
-        ArrayList<Player> substitutes = new ArrayList<>();
+    private void configureLists(final ListView currentPlayersLV, final ListView substitutesLV) {
+        currentPlayers = new ArrayList<>();
+        substitutes = new ArrayList<>();
         for (Player def:thisMatch.getDefenders()) {
             currentPlayers.add(def);
         }
@@ -67,6 +80,31 @@ public class PlayerChangeFragment extends Fragment {
         substitutesLV.setDivider(null);
         substitutesLV.setDividerHeight(0);
 
+        currentPlayersLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                playerOut = (Player) currentPlayersLV.getItemAtPosition(position);
+                log("playerOut set to" + playerOut.getPlayerName());
+                substitutionReady();
+            }
+        });
+
+        substitutesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                playerIn = (Player) substitutesLV.getItemAtPosition(position);
+                log("playerIn set to" + playerIn.getPlayerName());
+                substitutionReady();
+            }
+        });
+
+
+    }
+
+    private void substitutionReady() {
+        if (playerIn != null && playerOut != null) {
+            substituteBtn.setEnabled(true);
+        }
     }
 
     private void configureButtons(Button substituteBtn, Button cancelBtn) {
@@ -74,6 +112,12 @@ public class PlayerChangeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //#TODO substitute function: match.substitute(Player playerOut, Player playerIn);
+                thisMatch.substitute(playerOut, playerIn);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStack();
+
+                MatchFragment.hideOptionsOverlay();
             }
         });
 
@@ -84,5 +128,9 @@ public class PlayerChangeFragment extends Fragment {
                 fragmentManager.popBackStack();
             }
         });
+    }
+
+    public void log(String log) {
+        System.out.println(log);
     }
 }
