@@ -74,7 +74,7 @@ public class MatchFragment extends Fragment {
         if (allPlayers.isEmpty()) {
             createPlayers();
         }
-        thisMatch = new Match("Nexus 1", "Gemini 1", "20190907 15:30", view);
+        thisMatch = new Match("Ventura Sport 1", "Gemini 1", "20190928 15:30", view);
         configureLists(currentPlayersLV, substitutionsLV);
 
         //Print all players in match, in their function
@@ -114,19 +114,26 @@ public class MatchFragment extends Fragment {
     }
 
     private void createPlayers() {
+        // V Attackers V
         Player david = new Player("David", "H");
         Player roelant = new Player("Roelant", "H");
         Player nanda = new Player("Nanda", "D");
         Player ingrid = new Player("Ingrid", "D");
+        // V Defenders V
         Player bertJan = new Player("Bert-Jan", "H");
-        Player maiko = new Player("Maiko", "H");
+        Player gijs = new Player("Gijs", "H");
         Player michelle = new Player("Michelle", "D");
         Player agnes = new Player("Agnes", "D");
-        Player wieke = new Player("Wieke(sub)", "D");
-        Player lysanne = new Player("Lysanne(sub)", "D");
-        Player andre = new Player("André(sub)", "H");
-        Player christiaan = new Player("Christiaan(sub)", "H");
-        Player sebastiaan = new Player("Sebastiaan(sub)", "H");
+        // V Substitutes V
+        Player lysanne = new Player("Lysanne", "D");
+        Player wieke = new Player("Wieke", "D");
+        Player andre = new Player("André", "H");
+        Player maiko = new Player("Maiko", "H");
+
+        Player esther = new Player("Esther", "D");
+        Player fenna = new Player("Fenna", "D");
+        Player christiaan = new Player("Christiaan", "H");
+        Player sebastiaan = new Player("Sebastiaan", "H");
 
         System.out.println("Created following players: " + allPlayers);
     }
@@ -134,11 +141,11 @@ public class MatchFragment extends Fragment {
     private void configureLists(ListView currentPlayersLV, ListView substitutesLV) {
         ArrayList<Player> currentPlayers = new ArrayList<>();
         ArrayList<Player> substitutes = new ArrayList<>();
-        for (Player def:thisMatch.getDefenders()) {
-            currentPlayers.add(def);
-        }
         for (Player att:thisMatch.getAttackers()) {
             currentPlayers.add(att);
+        }
+        for (Player def:thisMatch.getDefenders()) {
+            currentPlayers.add(def);
         }
         for (Player sub:thisMatch.getSubstitutes()) {
             substitutes.add(sub);
