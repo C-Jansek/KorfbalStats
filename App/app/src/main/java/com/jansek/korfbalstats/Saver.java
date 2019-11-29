@@ -24,7 +24,7 @@ public class Saver extends Activity {
     public void saveMatch(Match thisMatch, Context context) {
         match = thisMatch;
         matchPlayers = match.getMatchPlayers();
-        String matchInfo = match.getAwayTeam() + " - " + match.getHomeTeam() + " | " + match.getMatchDate();
+        String matchInfo = match.getAwayTeam() + " - " + match.getHomeTeam().getTeamName() + " | " + match.getMatchDate();
         String fileContents = matchInfo + "\n\n" + printHeader();
         FileOutputStream outputStream;
         try {

@@ -14,7 +14,7 @@ public class Match implements Serializable {
     private List<Player> matchPlayers = new ArrayList<>();
     private View view;
     private static int amountOfShotTypes = 4;
-    private String homeTeam;
+    private Team homeTeam;
     private String awayTeam;
     private String matchDate;
     private List<Player> attackers;
@@ -42,11 +42,13 @@ public class Match implements Serializable {
     MaterialButton button_4C;
     MaterialButton button_4D;
 
-    public Match (String home, String away, String date, View thisView) {
+    public Match (Team home, String away, String date) {
         homeTeam = home;
         awayTeam = away;
         matchDate = date;
-        view = thisView;
+    }
+
+    public void initMatch() {
         addPlayers();
         initButtons();
     }
@@ -226,7 +228,7 @@ public class Match implements Serializable {
 
     // ------ Getters and Setters ----------
 
-    public String getHomeTeam() {
+    public Team getHomeTeam() {
         return homeTeam;
     }
     public String getAwayTeam() {
@@ -263,5 +265,9 @@ public class Match implements Serializable {
 
     public void setMatchPlayers(List<Player> matchPlayers) {
         this.matchPlayers = matchPlayers;
+    }
+
+    public void setMatchView(View view) {
+        this.view = view;
     }
 }

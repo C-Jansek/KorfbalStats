@@ -71,12 +71,14 @@ public class MatchFragment extends Fragment {
 //        if (allPlayers.isEmpty()) {
 //            createPlayers();
 //        }
+        thisMatch = db.getCurrentMatch();
+        thisMatch.setMatchView(view);
+        thisMatch.initMatch();
         if (thisMatch != null) {
             if (thisMatch.getMatchPlayers().isEmpty()) {
                 buildMatchPlayers();
             }
         }
-        thisMatch = new Match("Ventura Sport 1", "Gemini 1", "20190928 15:30", view);
         configureLists(currentPlayersLV, substitutionsLV);
 
         //Print all players in match, in their function

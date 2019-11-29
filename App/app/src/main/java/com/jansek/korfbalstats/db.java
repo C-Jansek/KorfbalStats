@@ -8,6 +8,7 @@ public class db {
     private List<Match> allMatches;
     static private List<Player> allPlayers;
     static private Team currentTeam;
+    static private Match currentMatch;
 
     public db () {
         teams = new ArrayList<>();
@@ -136,5 +137,13 @@ public class db {
 
     public static void setCurrentTeam(Team currentTeam) {
         db.currentTeam = currentTeam;
+    }
+
+    public static Match getCurrentMatch() {
+        return currentMatch;
+    }
+
+    public static void setCurrentMatch(Match currentMatch) {
+        db.currentMatch = currentMatch;
     }
 }

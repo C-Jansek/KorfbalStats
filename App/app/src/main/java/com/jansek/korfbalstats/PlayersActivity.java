@@ -27,7 +27,7 @@ public class PlayersActivity extends AppCompatActivity {
     private void configureTeamButtons() {
         linLayout = findViewById(R.id.teamButtonLL);
 
-//        add all teams
+//        add button for all teams
         for (final Team t : db.getTeams()) {
             MaterialButton mb = new MaterialButton(this);
             mb.setText(t.getTeamName());

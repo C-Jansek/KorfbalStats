@@ -20,6 +20,14 @@
         <item name="strokeColor">@color/colorAccent</item>
         <item name="iconTint">@color/colorAccent</item>
     </style>
+    <style name="back_button_style" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="iconTint">@color/colorPrimary</item>
+    </style>
+    <style name="add_button_style" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="iconTint">@color/colorPrimary</item>
+    </style>
 
     <style name="list_view_item">
         <item name="android:layout_height">@dimen/lvItemHeight</item>

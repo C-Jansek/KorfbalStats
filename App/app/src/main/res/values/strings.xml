@@ -2,16 +2,17 @@
     <string name="ks_app_name">Korfbal Stats</string>
     <string name="ks_app_slogan">Wedstrijden analyseren</string>
     <string name="ks_continue_button_text">Doorgaan</string>
+    <string name="ks_back_button_text">Terug</string>
 
     <string name="ks_goal_button">0 / 0</string>
     <string name="ks_textfield_name_hint">Naam</string>
-    <string name="ks_playername_attacker_0">Roelant</string>
-    <string name="ks_playername_attacker_1">Wytse</string>
-    <string name="ks_playername_attacker_2">Michelle</string>
-    <string name="ks_playername_attacker_3">Lysanne</string>
-    <string name="ks_shot_type_A">Schot - L</string>
-    <string name="ks_shot_type_B">Schot - K</string>
-    <string name="ks_shot_type_C">Doorloper</string>
+    <string name="ks_playername_attacker_0">PH 1</string>
+    <string name="ks_playername_attacker_1">PH 2</string>
+    <string name="ks_playername_attacker_2">PH 3</string>
+    <string name="ks_playername_attacker_3">PH 4</string>
+    <string name="ks_shot_type_A">Schot</string>
+    <string name="ks_shot_type_B">Doorloper</string>
+    <string name="ks_shot_type_C">Vrije Bal</string>
     <string name="ks_shot_type_D">Strafworp</string>
 
     <string name="ks_current_players_text">Opstelling</string>
@@ -20,4 +21,10 @@
     <string name="ks_first_home_btn">Nieuwe Wedstrijd</string>
     <string name="ks_second_home_btn">Spelers</string>
     <string name="ks_third_home_btn">Instellingen</string>
+
+    <string name="ks_match_start_text">Nieuwe wedstrijd</string>
+    <string name="ks_hometeam_hint">Thuis team</string>
+    <string name="ks_awayteam_hint">Uit team</string>
+    <string name="ks_date_text">Datum</string>
+    <string name="ks_time_text">Tijd</string>
 </resources>

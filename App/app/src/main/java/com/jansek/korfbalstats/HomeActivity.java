@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         firstHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, MatchActivity.class));
+                startActivity(new Intent(HomeActivity.this, MatchStartActivity.class));
             }
         });
 
