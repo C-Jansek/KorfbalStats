@@ -26,4 +26,17 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <style name="header">
+        <item name="android:textSize">48sp</item>
+        <item name="android:fontFamily">@font/roboto_thin</item>
+        <item name="android:color">@color/colorPrimary</item>
+    </style>
+
+    <style name="homeBtn" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">18sp</item>
+<!--        <item name="android:fontFamily">@font/roboto_regular</item>-->
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

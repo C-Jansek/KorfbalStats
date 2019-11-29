@@ -10,12 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Match implements Serializable {
+
+    private List<Player> matchPlayers = new ArrayList<>();
     private View view;
     private static int amountOfShotTypes = 4;
     private String homeTeam;
     private String awayTeam;
     private String matchDate;
-    private List<Player> players;
     private List<Player> attackers;
     private List<Player> defenders;
     private List<Player> substitutes;
@@ -50,20 +51,27 @@ public class Match implements Serializable {
         initButtons();
     }
 
+    public void clearPlayers() {
+        this.matchPlayers.clear();
+    }
+
     private void addPlayers() {
-        this.players = new ArrayList<>();
+        this.matchPlayers = new ArrayList<>();
         this.attackers = new ArrayList<>();
         this.defenders = new ArrayList<>();
         this.substitutes = new ArrayList<>();
-        if (!MatchFragment.getAllPlayers().isEmpty()) {
-            for(Player p: MatchFragment.getAllPlayers()) {
-                this.players.add(p);
+        if (this.matchPlayers.isEmpty()) {
+            for (Player p : db.getCurrentTeam().getTeamPlayers()) {
+                matchPlayers.add(p);
             }
         }
         createSides();
         setPlayerNameTextViews();
     }
 
+    public void addMatchPlayer(Player p) {
+        this.matchPlayers.add(p);
+    }
 
     public void setPlayerNameTextViews() {
         TextView textviewAttacker0 = view.findViewById(R.id.textview_attackername_0);
@@ -124,13 +132,14 @@ public class Match implements Serializable {
 
     private void createSides() {
         for(int i=0;i<4;i++) {
-            this.attackers.add(players.get(i));
+            this.attackers.add(matchPlayers.get(i));
         }
         for(int i=4;i<8;i++) {
-            this.defenders.add(players.get(i));
+            this.defenders.add(matchPlayers.get(i));
         }
-        for(int i=8; i < players.size();i++) {
-            this.substitutes.add(players.get(i));
+//        System.out.println("Players: " + matchPlayers);
+        for(int i=8; i < matchPlayers.size();i++) {
+            this.substitutes.add(matchPlayers.get(i));
         }
 
 
@@ -203,7 +212,7 @@ public class Match implements Serializable {
         if (backTrack.isEmpty()) {return;}
         int last = backTrack.get(backTrack.size() - 1);
         int id = last / (16 * 16);
-        Player thisPlayer = Player.byId(id, players);
+        Player thisPlayer = Player.byId(id, matchPlayers);
         int thisShotType = (last - id*16*16) / 16;
         boolean isGoal = false;
         if ((last%2)==1) {isGoal = true;}
@@ -226,9 +235,6 @@ public class Match implements Serializable {
     public String getMatchDate() {
         return matchDate;
     }
-    public List<Player> getPlayers() {
-        return players;
-    }
     public List<Player> getAttackers() {
         return attackers;
     }
@@ -249,5 +255,13 @@ public class Match implements Serializable {
     }
     public static int getAmountOfShotTypes() {
         return amountOfShotTypes;
+    }
+
+    public List<Player> getMatchPlayers() {
+        return matchPlayers;
+    }
+
+    public void setMatchPlayers(List<Player> matchPlayers) {
+        this.matchPlayers = matchPlayers;
     }
 }

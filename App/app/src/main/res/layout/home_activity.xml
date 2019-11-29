@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.37"
+            android:src="@drawable/ic_korfbalstatsiconvector2"
+            android:gravity="bottom"
+            android:paddingTop="20dp"
+            />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.10"
+            android:background="@android:color/transparent"
+            android:text="@string/ks_app_name"
+            style="@style/header"
+            android:gravity="center_horizontal|top"
+            />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:paddingBottom="80dp"
+            >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/firstHomeBtn"
+                android:layout_width="@dimen/homeButtonWidth"
+                android:layout_height="wrap_content"
+                style="@style/homeBtn"
+                android:text="@string/ks_first_home_btn"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/secondHomeBtn"
+                android:layout_width="@dimen/homeButtonWidth"
+                android:layout_height="wrap_content"
+                style="@style/homeBtn"
+                android:text="@string/ks_second_home_btn"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/thirdHomeBtn"
+                android:layout_width="@dimen/homeButtonWidth"
+                android:layout_height="wrap_content"
+                style="@style/homeBtn"
+                android:text="@string/ks_third_home_btn"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
+
+
+
+
+

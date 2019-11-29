@@ -5,18 +5,33 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Player {
+    private Team playerStandardTeam;
     private String playerName;
     private String sex;
     private int id;
     private int amountOfShotTypes = Match.getAmountOfShotTypes();
     private List<List<Integer>> playerStats;
 
-
     public Player (String playerName, String sex) {
         this.playerName = playerName;
         this.sex = sex;
         id = createId();
         MatchFragment.addToAllPlayers(this);
+        db.addToAllPlayers(this);
+
+        resetPlayerStats();
+    }
+
+    public Player (String playerName, String sex, String standardTeam) {
+        if (db.teamExists(standardTeam)) {
+            playerStandardTeam = db.findTeamByName(standardTeam);
+            playerStandardTeam.addPlayer(this);
+        }
+        this.playerName = playerName;
+        this.sex = sex;
+        id = createId();
+//        MatchFragment.addToAllPlayers(this);
+        db.addToAllPlayers(this);
 
         resetPlayerStats();
     }
@@ -40,7 +55,7 @@ public class Player {
     }
 
     private int createId() {
-        int number = MatchFragment.getAllPlayers().size() + 1;
+        int number = db.getAllPlayers().size() + 1;
         return number;
     }
 

@@ -1,17 +1,13 @@
 package com.jansek.korfbalstats;
 
-import android.app.VoiceInteractor;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,8 +68,13 @@ public class MatchFragment extends Fragment {
         ListView currentPlayersLV = (ListView) view.findViewById(R.id.current_players_list);
         ListView substitutionsLV = (ListView) view.findViewById(R.id.substitutes_list);
 
-        if (allPlayers.isEmpty()) {
-            createPlayers();
+//        if (allPlayers.isEmpty()) {
+//            createPlayers();
+//        }
+        if (thisMatch != null) {
+            if (thisMatch.getMatchPlayers().isEmpty()) {
+                buildMatchPlayers();
+            }
         }
         thisMatch = new Match("Ventura Sport 1", "Gemini 1", "20190928 15:30", view);
         configureLists(currentPlayersLV, substitutionsLV);
@@ -82,7 +84,7 @@ public class MatchFragment extends Fragment {
         System.out.println("Defenders: " + thisMatch.getDefenders() + "\n");
         System.out.println("Substitutes: " + thisMatch.getSubstitutes() + "\n");
 
-        for (Player p:thisMatch.getPlayers()) {
+        for (Player p:thisMatch.getMatchPlayers()) {
             p.getPlayerStats();
         }
 
@@ -136,6 +138,16 @@ public class MatchFragment extends Fragment {
         Player sebastiaan = new Player("Sebastiaan", "H");
 
         System.out.println("Created following players: " + allPlayers);
+    }
+
+    private void buildMatchPlayers() {
+        if (thisMatch != null ) {thisMatch.clearPlayers();}
+        for (Player p : db.getCurrentTeam().getTeamPlayers()) {
+            if (!db.getAllPlayers().contains(p)) {
+                db.addToAllPlayers(p);
+            }
+            thisMatch.addMatchPlayer(p);
+        }
     }
 
     private void configureLists(ListView currentPlayersLV, ListView substitutesLV) {
@@ -236,7 +248,7 @@ public class MatchFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println("Clicked on undo button!");
-//                for (Player p:thisMatch.getPlayers()) {
+//                for (Player p:thisMatch.getMatchPlayers()) {
 //                    p.printPlayerStats();
 //                }
                 thisMatch.onUndo();
@@ -598,6 +610,7 @@ public class MatchFragment extends Fragment {
     public Match getThisMatch() {
         return thisMatch;
     }
+
 }
 
 

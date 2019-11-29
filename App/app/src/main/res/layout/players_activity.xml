@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.10"
+            android:background="@android:color/transparent"
+            android:text="Choose Team"
+            style="@style/header"
+            android:gravity="center_horizontal|top"
+            />
+        <LinearLayout
+            android:id="@+id/teamButtonLL"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="vertical"
+            android:paddingBottom="80dp"
+            >
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/firstHomeBtn"
+                android:layout_width="@dimen/homeButtonWidth"
+                android:layout_height="wrap_content"
+                style="@style/homeBtn"
+                android:text="placeholder"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</FrameLayout>
+
+
+
+
+

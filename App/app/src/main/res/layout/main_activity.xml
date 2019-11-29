@@ -21,8 +21,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="256dp"
             android:text="@string/ks_app_name"
-            android:textSize="48sp"
-            android:fontFamily="@font/roboto_bold"/>
+            style="@style/header"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,7 +35,7 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Continue"
+            android:text="@string/ks_continue_button_text"
             android:id="@+id/continueButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="72dp"/>
