@@ -68,10 +68,10 @@ public class db {
         Player desanne = new Player("Désanne", "D", "Gemini A1");
 
         //A2
-        Player ryan = new Player("Ryan", "H", "Gemini A2");
+        Player ryan = new Player("Ryan", "H", "Gemini A1");
         Player nathan = new Player("Nathan", "H", "Gemini A2");
         Player eva = new Player("Eva", "D", "Gemini A2");
-        Player marloes = new Player("Marloes", "D", "Gemini A2");
+        Player marloes = new Player("Marloes", "D", "Gemini A1");
 
         Player fabian = new Player("Fabian", "H", "Gemini A2");
         Player jochem = new Player("Jochem", "H", "Gemini A2");

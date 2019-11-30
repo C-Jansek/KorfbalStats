@@ -35,7 +35,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:id="@+id/teamdropdown"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_marginBottom="8dp"
             android:hint="@string/ks_hometeam_hint">
 
@@ -50,7 +50,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/away_team_input"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:hint="@string/ks_awayteam_hint"
             >
@@ -63,7 +63,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:hint="@string/ks_date_text"
             android:id="@+id/date_input"
